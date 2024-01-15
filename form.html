@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+    </head>
+    <body>
+        <section class="sub-header">
+        <nav>
+            <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="schedule.html">SCHEDULE</a></li>
+                    <li><a href="contracts.html">CONTRACTS</a></li>
+                    <li><a href="papers.html">PAPERS</a></li>
+                    <li><a href="form.html">FORM</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>Form Section</h1>
+    </section>
+
+    <div id="comments"></div>
+  
+  <h2>Add a comment</h2>
+  <form class="comment-form">
+    <input type="text" id="name" placeholder="Your name"><br>
+    <textarea id="comment" placeholder="Your comment"></textarea><br>
+    <input type="submit" value="Submit" onclick="addComment(event)">
+  </form>
+  
+  <script>
+    // Function to display comments
+    function displayComments(comments) {
+      var commentsContainer = document.getElementById("comments");
+      commentsContainer.innerHTML = ""; // Clear existing comments
+      
+      comments.forEach(function(comment) {
+        var commentContainer = document.createElement("div");
+        commentContainer.classList.add("comment-container");
+        
+        var commentInfo = document.createElement("div");
+        commentInfo.classList.add("comment-info");
+        commentInfo.innerHTML = "<span>" + comment.name + "</span>";
+        
+        var commentText = document.createElement("div");
+        commentText.classList.add("comment-text");
+        commentText.innerText = comment.comment;
+        
+        commentContainer.appendChild(commentInfo);
+        commentContainer.appendChild(commentText);
+        
+        commentsContainer.appendChild(commentContainer);
+      });
+    }
+    
+    // Add new comment
+    function addComment(event) {
+      event.preventDefault(); // Prevent form submission
+      
+      var name = document.getElementById("name").value;
+      var comment = document.getElementById("comment").value;
+      
+      // Retrieve existing comments from local storage
+      var comments = JSON.parse(localStorage.getItem("comments")) || [];
+      
+      // Add new comment to the array
+      comments.push({ name: name, comment: comment });
+      
+      // Save updated comments to local storage
+      localStorage.setItem("comments", JSON.stringify(comments));
+      
+      // Reload comments after storing new comment
+      retrieveComments();
+      
+      // Reset the form
+      document.getElementById("name").value = "";
+      document.getElementById("comment").value = "";
+    }
+    
+    // Retrieve comments from local storage
+    function retrieveComments() {
+      var comments = JSON.parse(localStorage.getItem("comments")) || [];
+      displayComments(comments);
+    }
+    
+    // Initial comment display on page load
+    retrieveComments();
+  </script>
+    </body>
+</html>

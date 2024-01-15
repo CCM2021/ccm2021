@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <title>CCM 2021</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="schedule.html">SCHEDULE</a></li>
+                    <li><a href="contracts.html">CONTRACTS</a></li>
+                    <li><a href="papers.html">PAPERS</a></li>
+                    <li><a href="form.html">FORM</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+    <div class="text-box">
+        <h1>WELCOME TO CCM 2021</h1>
+        <p>You will be able to view all the details about me in this website, for our convenience.</p>
+    </div>
+            
+    </section>
+
+    <section class="includes">
+        <h1>This Website Includes</h1>
+
+        <div class="row">
+            <div class="includes-col">
+                <h3>Schedule</h3>
+            </div>
+            <div class="includes-col">
+                <h3>Contracts</h3>
+            </div>
+            <div class="includes-col">
+                <h3>Papers</h3>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        var navLinks = document.getElementById("navLinks");
+
+        function showMenu(){
+            navLinks.style.right = "0";
+        }
+        function hideMenu(){
+            navLinks.style.right = "-200px";
+        }
+
+    </script>
+
+</body>
+</html>
